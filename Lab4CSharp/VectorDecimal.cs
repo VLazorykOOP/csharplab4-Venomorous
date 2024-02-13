@@ -558,27 +558,20 @@ public class Task2
     {
         try
         {
-            // Vectors using different constructors
             VectorDecimal vector1 = new();
             VectorDecimal vector2 = new(3);
             VectorDecimal vector3 = new(3, 42);
 
-            // Number of vectors
             Console.WriteLine($"Number of vectors: {VectorDecimal.CountVectors()}");
 
-            // Inputting elements for the second vector
             vector2.Input();
 
-            // Printing elements of the second vector
             vector2.Display();
 
-            // Setting all elements of the third vector to 99
             vector3.AssignValue(99);
 
-            // Printing elements of the third vector
             vector3.Display();
 
-            // Testing unary operations
             Console.WriteLine("Testing Unary Operations:");
             Console.WriteLine($"Original Vector 1: {vector1[0]}");
             vector1++;
@@ -586,10 +579,8 @@ public class Task2
             vector1--;
             Console.WriteLine($"After -- operation: {vector1[0]}");
 
-            // Testing logical NOT operator
             Console.WriteLine($"Vector 3 is not empty: {!vector3}");
 
-            // Testing bitwise NOT operator
             Console.WriteLine("Testing Bitwise NOT Operator:");
             Console.WriteLine("Original Vector 2:");
             vector2.Display();
@@ -597,7 +588,6 @@ public class Task2
             Console.WriteLine("After ~ operation:");
             notVector2.Display();
 
-            // Testing binary operations
             Console.WriteLine("Testing Binary Operations:");
 
             Console.WriteLine("Vector 2 + Vector 3:");
@@ -640,7 +630,6 @@ public class Task2
             VectorDecimal leftShiftVector = vector3 << 2;
             leftShiftVector.Display();
 
-            // Testing comparison operators
             Console.WriteLine("Testing Comparison Operators:");
 
             Console.WriteLine($"Vector 2 == Vector 3: {vector2 == vector3}");

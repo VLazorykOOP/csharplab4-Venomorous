@@ -11,7 +11,6 @@ public class DecimalMatrix
     protected int codeError; // Error code
     protected static int num_mf; // Number of matrices
 
-    // Constructors
     public DecimalMatrix()
     {
         DCArray = new decimal[1, 1];
@@ -37,7 +36,6 @@ public class DecimalMatrix
         codeError = 0;
         num_mf++;
 
-        // Initialize the elements with the specified value
         for (uint i = 0; i < rows; i++)
         {
             for (uint j = 0; j < columns; j++)
@@ -47,13 +45,11 @@ public class DecimalMatrix
         }
     }
 
-    // Destructor
     ~DecimalMatrix()
     {
         Console.WriteLine("Matrix destroyed!");
     }
 
-    // Methods
     public void Input()
     {
         for (uint i = 0; i < n; i++)
@@ -103,7 +99,6 @@ public class DecimalMatrix
         return num_mf;
     }
 
-    // Properties
     public uint Rows
     {
         get { return n; }
@@ -120,7 +115,6 @@ public class DecimalMatrix
         set { codeError = value; }
     }
 
-    // Indexers
     public decimal this[uint i, uint j]
     {
         get
@@ -171,7 +165,6 @@ public class DecimalMatrix
         }
     }
 
-    // Overload unary operations
     public static DecimalMatrix operator ++(DecimalMatrix matrix)
     {
         for (uint i = 0; i < matrix.n; i++)
@@ -454,7 +447,6 @@ public class DecimalMatrix
         return result;
     }
 
-    //Overload bitwise binary operations
     public static DecimalMatrix operator |(DecimalMatrix matrix1, DecimalMatrix matrix2)
     {
         if (matrix1.n != matrix2.n || matrix1.m != matrix2.m)
@@ -562,7 +554,6 @@ public class DecimalMatrix
         return result;
     }
 
-    // Overload equality and inequality operations
     public static bool operator ==(DecimalMatrix matrix1, DecimalMatrix matrix2)
     {
         if (ReferenceEquals(matrix1, null) && ReferenceEquals(matrix2, null))
@@ -591,7 +582,6 @@ public class DecimalMatrix
         return !(matrix1 == matrix2);
     }
 
-    // Overload comparison operations
     public static bool operator >(DecimalMatrix matrix1, DecimalMatrix matrix2)
     {
         if (matrix1.n != matrix2.n || matrix1.m != matrix2.m)
