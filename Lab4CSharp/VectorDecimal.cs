@@ -32,7 +32,7 @@ namespace MyVectorDecimal
             num = size;
             codeError = 0;
 
-            for (int i = 0; i < size; i++)
+            for (uint i = 0; i < size; i++)
             {
                 ArrayDecimal[i] = initValue;
             }
@@ -47,7 +47,7 @@ namespace MyVectorDecimal
 
         public void Input()
         {
-            for (int i = 0; i < num; i++)
+            for (uint i = 0; i < num; i++)
             {
                 Console.Write($"Enter element at index {i}: ");
                 if (decimal.TryParse(Console.ReadLine(), out decimal value))
@@ -65,7 +65,7 @@ namespace MyVectorDecimal
         public void Display()
         {
             Console.Write("Vector elements: ");
-            for (int i = 0; i < num; i++)
+            for (uint i = 0; i < num; i++)
             {
                 Console.Write($"{ArrayDecimal[i]} ");
             }
@@ -81,7 +81,7 @@ namespace MyVectorDecimal
         //    }
 
         //    // Copy values from input array to ArrayDecimal
-        //    for (int i = 0; i < num; i++)
+        //    for (uint i = 0; i < num; i++)
         //    {
         //        ArrayDecimal[i] = values[i];
         //    }
@@ -89,7 +89,7 @@ namespace MyVectorDecimal
 
         public void AssignValue(decimal value)
         {
-            //for (int i = 0; i < num; i++)
+            //for (uint i = 0; i < num; i++)
             //{
             //    ArrayDecimal[i] = value;
             //}
@@ -101,7 +101,7 @@ namespace MyVectorDecimal
             return num_vec;
         }
 
-        public decimal this[int index]
+        public decimal this[uint index]
         {
             get
             {
@@ -155,7 +155,7 @@ namespace MyVectorDecimal
 
         public static VectorDecimal operator ~(VectorDecimal vector)
         {
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 vector.ArrayDecimal[i] = Math.Floor(vector.ArrayDecimal[i]);
             }
@@ -164,7 +164,7 @@ namespace MyVectorDecimal
 
         public static VectorDecimal operator ++(VectorDecimal vector)
         {
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 vector.ArrayDecimal[i]++;
             }
@@ -174,7 +174,7 @@ namespace MyVectorDecimal
 
         public static VectorDecimal operator --(VectorDecimal vector)
         {
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 vector.ArrayDecimal[i]--;
             }
@@ -184,10 +184,10 @@ namespace MyVectorDecimal
 
         public static VectorDecimal operator +(VectorDecimal vector1, VectorDecimal vector2)
         {
-            int maxLength = Math.Max((int)vector1.num, (int)vector2.num);
+            uint maxLength = Math.Max(vector1.num, vector2.num);
             decimal[] result = new decimal[maxLength];
 
-            for (int i = 0; i < maxLength; i++)
+            for (uint i = 0; i < maxLength; i++)
             {
                 decimal value1 = (i < vector1.num) ? vector1.ArrayDecimal[i] : 0;
                 decimal value2 = (i < vector2.num) ? vector2.ArrayDecimal[i] : 0;
@@ -202,7 +202,7 @@ namespace MyVectorDecimal
         {
             decimal[] result = new decimal[vector.num];
 
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 result[i] = vector.ArrayDecimal[i] + scalar;
             }
@@ -212,10 +212,10 @@ namespace MyVectorDecimal
 
         public static VectorDecimal operator -(VectorDecimal vector1, VectorDecimal vector2)
         {
-            int maxLength = Math.Max((int)vector1.num, (int)vector2.num);
+            uint maxLength = Math.Max(vector1.num, vector2.num);
             decimal[] result = new decimal[maxLength];
 
-            for (int i = 0; i < maxLength; i++)
+            for (uint i = 0; i < maxLength; i++)
             {
                 decimal value1 = (i < vector1.num) ? vector1.ArrayDecimal[i] : 0;
                 decimal value2 = (i < vector2.num) ? vector2.ArrayDecimal[i] : 0;
@@ -223,14 +223,14 @@ namespace MyVectorDecimal
                 result[i] = value1 - value2;
             }
 
-            return new VectorDecimal((uint)maxLength, 0) { ArrayDecimal = result };
+            return new VectorDecimal(maxLength, 0) { ArrayDecimal = result };
         }
 
         public static VectorDecimal operator -(VectorDecimal vector, decimal scalar)
         {
             decimal[] result = new decimal[vector.num];
 
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 result[i] = vector.ArrayDecimal[i] - scalar;
             }
@@ -241,7 +241,7 @@ namespace MyVectorDecimal
         public static VectorDecimal operator *(VectorDecimal vector, decimal scalar)
         {
             VectorDecimal result = new VectorDecimal(vector.num);
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 result[i] = vector[i] * scalar;
             }
@@ -258,7 +258,7 @@ namespace MyVectorDecimal
             }
 
             VectorDecimal result = new VectorDecimal(vector1.num);
-            for (int i = 0; i < result.num; i++)
+            for (uint i = 0; i < result.num; i++)
             {
                 result[i] = vector1[i] * vector2[i];
             }
@@ -273,7 +273,7 @@ namespace MyVectorDecimal
             }
 
             VectorDecimal result = new VectorDecimal(vector.num);
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 result[i] = vector[i] / scalar;
             }
@@ -290,7 +290,7 @@ namespace MyVectorDecimal
             }
 
             VectorDecimal result = new VectorDecimal(vector1.num);
-            for (int i = 0; i < result.num; i++)
+            for (uint i = 0; i < result.num; i++)
             {
                 if (vector2[i] == 0)
                 {
@@ -309,7 +309,7 @@ namespace MyVectorDecimal
             }
 
             VectorDecimal result = new VectorDecimal(vector.num);
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 result[i] = vector[i] % scalar;
             }
@@ -326,7 +326,7 @@ namespace MyVectorDecimal
             }
 
             VectorDecimal result = new VectorDecimal(vector1.num);
-            for (int i = 0; i < result.num; i++)
+            for (uint i = 0; i < result.num; i++)
             {
                 if (vector2[i] == 0)
                 {
@@ -343,7 +343,7 @@ namespace MyVectorDecimal
                 throw new ArgumentException("Vector sizes must be equal for bitwise OR operation.");
 
             VectorDecimal result = new VectorDecimal(vector1.num);
-            for (int i = 0; i < result.num; i++)
+            for (uint i = 0; i < result.num; i++)
             {
                 int intResult = (int)vector1[i] | (int)vector2[i];
                 result[i] = (decimal)intResult;
@@ -354,7 +354,7 @@ namespace MyVectorDecimal
         public static VectorDecimal operator |(VectorDecimal vector, byte scalar)
         {
             VectorDecimal result = new VectorDecimal(vector.num);
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 int intResult = (int)vector[i] | scalar;
                 result[i] = (decimal)intResult;
@@ -370,7 +370,7 @@ namespace MyVectorDecimal
                 );
 
             VectorDecimal result = new VectorDecimal(vector1.num);
-            for (int i = 0; i < result.num; i++)
+            for (uint i = 0; i < result.num; i++)
             {
                 int intResult = (int)vector1[i] ^ (int)vector2[i];
                 result[i] = (decimal)intResult;
@@ -381,7 +381,7 @@ namespace MyVectorDecimal
         public static VectorDecimal operator ^(VectorDecimal vector, byte scalar)
         {
             VectorDecimal result = new VectorDecimal(vector.num);
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 result[i] = (int)vector[i] ^ scalar;
             }
@@ -396,7 +396,7 @@ namespace MyVectorDecimal
                 );
 
             VectorDecimal result = new VectorDecimal(vector1.num);
-            for (int i = 0; i < result.num; i++)
+            for (uint i = 0; i < result.num; i++)
             {
                 int intResult = (int)vector1[i] & (int)vector2[i];
                 result[i] = (decimal)intResult;
@@ -407,7 +407,7 @@ namespace MyVectorDecimal
         public static VectorDecimal operator &(VectorDecimal vector, byte scalar)
         {
             VectorDecimal result = new VectorDecimal(vector.num);
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 result[i] = (int)vector[i] & scalar;
             }
@@ -416,10 +416,10 @@ namespace MyVectorDecimal
 
         public static VectorDecimal operator >>(VectorDecimal vector1, VectorDecimal vector2)
         {
-            int maxLength = Math.Max((int)vector1.num, (int)vector2.num);
+            uint maxLength = Math.Max(vector1.num, vector2.num);
             VectorDecimal result = new VectorDecimal((uint)maxLength);
 
-            for (int i = 0; i < maxLength; i++)
+            for (uint i = 0; i < maxLength; i++)
             {
                 decimal value1 = (i < vector1.num) ? vector1[i] : 0;
                 decimal value2 = (i < vector2.num) ? vector2[i] : 0;
@@ -432,7 +432,7 @@ namespace MyVectorDecimal
         public static VectorDecimal operator >>(VectorDecimal vector, uint scalar)
         {
             VectorDecimal result = new VectorDecimal(vector.num);
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 result[i] = (uint)vector[i] >> (int)scalar;
             }
@@ -441,10 +441,10 @@ namespace MyVectorDecimal
 
         public static VectorDecimal operator <<(VectorDecimal vector1, VectorDecimal vector2)
         {
-            int maxLength = Math.Max((int)vector1.num, (int)vector2.num);
+            uint maxLength = Math.Max(vector1.num, vector2.num);
             VectorDecimal result = new VectorDecimal((uint)maxLength);
 
-            for (int i = 0; i < maxLength; i++)
+            for (uint i = 0; i < maxLength; i++)
             {
                 decimal value1 = (i < vector1.num) ? vector1[i] : 0;
                 decimal value2 = (i < vector2.num) ? vector2[i] : 0;
@@ -457,7 +457,7 @@ namespace MyVectorDecimal
         public static VectorDecimal operator <<(VectorDecimal vector, uint scalar)
         {
             VectorDecimal result = new VectorDecimal(vector.num);
-            for (int i = 0; i < vector.num; i++)
+            for (uint i = 0; i < vector.num; i++)
             {
                 result[i] = (uint)vector[i] << (int)scalar;
             }
@@ -475,7 +475,7 @@ namespace MyVectorDecimal
             if (vector1.num != vector2.num)
                 return false;
 
-            for (int i = 0; i < vector1.num; i++)
+            for (uint i = 0; i < vector1.num; i++)
             {
                 if (vector1[i] != vector2[i])
                     return false;
@@ -494,7 +494,7 @@ namespace MyVectorDecimal
             if (vector1.num != vector2.num)
                 throw new ArgumentException("Vector sizes must be equal for comparison.");
 
-            for (int i = 0; i < vector1.num; i++)
+            for (uint i = 0; i < vector1.num; i++)
             {
                 if (vector1[i] <= vector2[i])
                     return false;
@@ -508,7 +508,7 @@ namespace MyVectorDecimal
             if (vector1.num != vector2.num)
                 throw new ArgumentException("Vector sizes must be equal for comparison.");
 
-            for (int i = 0; i < vector1.num; i++)
+            for (uint i = 0; i < vector1.num; i++)
             {
                 if (vector1[i] < vector2[i])
                     return false;
@@ -522,7 +522,7 @@ namespace MyVectorDecimal
             if (vector1.num != vector2.num)
                 throw new ArgumentException("Vector sizes must be equal for comparison.");
 
-            for (int i = 0; i < vector1.num; i++)
+            for (uint i = 0; i < vector1.num; i++)
             {
                 if (vector1[i] >= vector2[i])
                     return false;
@@ -536,7 +536,7 @@ namespace MyVectorDecimal
             if (vector1.num != vector2.num)
                 throw new ArgumentException("Vector sizes must be equal for comparison.");
 
-            for (int i = 0; i < vector1.num; i++)
+            for (uint i = 0; i < vector1.num; i++)
             {
                 if (vector1[i] > vector2[i])
                     return false;
