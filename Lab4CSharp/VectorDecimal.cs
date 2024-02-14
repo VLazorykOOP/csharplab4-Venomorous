@@ -89,11 +89,11 @@ namespace MyVectorDecimal
 
         public void AssignValue(decimal value)
         {
-            //for (uint i = 0; i < num; i++)
-            //{
-            //    ArrayDecimal[i] = value;
-            //}
-            Array.Fill(ArrayDecimal, value);
+            for (uint i = 0; i < num; i++)
+            {
+                ArrayDecimal[i] = value;
+            }
+            //Array.Fill(ArrayDecimal, value);
         }
 
         public static uint CountVectors()

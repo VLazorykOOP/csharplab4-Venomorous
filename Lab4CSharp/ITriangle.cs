@@ -1,4 +1,5 @@
-﻿using MyVectorDecimal;
+﻿using System;
+using MyVectorDecimal;
 
 namespace Triangle;
 

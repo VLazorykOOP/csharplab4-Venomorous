@@ -1,4 +1,5 @@
-﻿using MatrixDecimal;
+﻿using System;
+using MatrixDecimal;
 using MyVectorDecimal;
 using Triangle;
 
